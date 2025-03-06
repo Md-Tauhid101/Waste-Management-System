@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Full viewport height */
+    background-image: url('../../public/bg-img.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+    /* Dark overlay */
+    z-index: 1;
+}
+
+.heading h1 {
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 4.5rem;
+    text-align: center;
+    z-index: 2;
+    /* Ensures it appears above the overlay */
+}
+
+.middle-container {
+    position: absolute;
+    top: 18%;
+    left: 10%;
+    height: 70%;
+    width: 80%;
+    border-radius: 30px;
+    z-index: 2;
+    /* Ensure it is below the content inside */
+    overflow: hidden;
+    /* Prevent ::before from spilling out */
+}
+
+.middle-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(185, 184, 184, 0.55);
+    z-index: -1;
+    /* Set lower z-index to prevent blocking */
+    border-radius: 30px;
+}
+
+.home-heading h1 {
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 4.5rem;
+    text-align: center;
+    z-index: 2;
+}
+
+.waste-category {
+    display: flex;
+    flex-direction: row;
+}
+
+.category-left {
+    position: absolute;
+    top: 13%;
+    left: 5%;
+    height: 75%;
+    width: 40%;
+    border-radius: 30px;
+}
+
+
+
+/* General Styling for img-input */
+.img-input {
+    position: relative;
+    top: 88%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 0px 0px 30px 30px;
+    background-color: #6E5C4F;
+    height: 12.1%;
+    width: 100%;
+}
+
+.input-img {
+    display: none;
+}
+
+/* Choose Image: Right-to-Left Hover Effect */
+.choose-img {
+    position: relative;
+    left: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2.3rem;
+    font-weight: 500;
+    padding-left: 30px;
+    border-radius: 0 0 0 30px;
+    border-right: 1px solid black;
+    padding-right: 25px;
+    cursor: pointer;
+    width: 49.8%;
+    overflow: hidden;
+    /* Prevents overflow during animation */
+    transition: color 0.2s ease-in-out;
+}
+
+.choose-img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -100%;
+    /* Start off-screen to the right */
+    width: 100%;
+    height: 100%;
+    background-color: #583F3C;
+    z-index: 1;
+    /* Keeps the background below the text */
+    transition: right 0.3s ease-in-out;
+}
+
+.choose-img:hover::before {
+    right: 0;
+    /* Slide background in from right to left */
+}
+
+.choose-img span {
+    position: relative;
+    z-index: 2;
+    /* Ensures text stays above background animation */
+}
+
+/* Submit Image: Left-to-Right Hover Effect */
+.submit-button {
+    position: relative;
+    left: 3px;
+    border: none;
+    border-radius: 0 0 30px 0;
+    display: inline-block;
+    background-color: #583F3C;
+    color: white;
+    cursor: pointer;
+    width: 50%;
+    font-size: 2.3rem;
+    font-weight: 500;
+    overflow: hidden;
+    /* Prevents overflow during animation */
+    transition: color 0.2s ease-in-out;
+}
+
+.submit-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    /* Start off-screen to the left */
+    width: 100%;
+    height: 100%;
+    background-color: #6E5C4F;
+    z-index: 1;
+    /* Keeps the background below the text */
+    transition: left 0.3s ease-in-out;
+}
+
+.submit-button:hover::before {
+    left: 0;
+    /* Slide background in from left to right */
+}
+
+.submit-button span {
+    position: relative;
+    z-index: 2;
+    /* Ensures text stays above background animation */
+}
+
+
+
+.category-right {
+    position: absolute;
+    top: 13%;
+    left: 55%;
+    height: 75%;
+    width: 40%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
+}
+
+.waste-type {
+    position: relative;
+    top: 5%;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.waste-type h3 {
+    margin-top: 1rem;
+}
+
+.recommendation {
+    position: relative;
+    left: 5%;
+    width: 98%;
+}
+
+.recommendation p {
+    padding: 1rem;
+}
+
+.articles {
+    position: relative;
+    left: 7%;
+}
+
+.waste-amount {
+    position: absolute;
+    top: 77.5%;
+    left: 6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    width: 94%;
+}
+
+.waste-amount label {
+    font-size: 1.5rem;
+}
+
+.amount-ok-button {
+    position: relative;
+    padding: 0.5rem;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    margin: 1.5%;
+    background-color: #6E5C4F;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    overflow: hidden;
+    /* Prevents overflow during animation */
+    transition: color 0.3s ease-in-out;
+    z-index: 0;
+    /* Ensure button is the base */
+}
+
+.amount-ok-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #9A7F6E;
+    z-index: -1;
+    /* Keep background behind the text */
+    transition: left 0.4s ease-in-out;
+}
+
+.amount-ok-button:hover::before {
+    left: 0;
+    /* Slide background in from left to right */
+}
+
+.waste-amount input {
+    padding: 1%;
+    width: 40%;
+}
+
+
+
+
+
+
+
+@media (max-width: 1440px) {
+    .category-left {
+        position: absolute;
+        top: 13%;
+        left: 5%;
+        height: 75%;
+        width: 40%;
+        border-radius: 30px;
+    }
+
+    .choose-img {
+        position: relative;
+        left: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 500;
+        padding-left: 30px;
+        border-radius: 0 0 0 30px;
+        border-right: 1px solid black;
+        padding-right: 25px;
+        cursor: pointer;
+        width: 49.8%;
+        overflow: hidden;
+        transition: color 0.2s ease-in-out;
+    }
+
+    .img-input {
+        position: absolute;
+        top: 88.88%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-radius: 0px 0px 30px 30px;
+        background-color: #6E5C4F;
+        height: 13%;
+    }
+
+    .submit-button {
+        position: relative;
+        left: 0px;
+        border: none;
+        border-radius: 0 0 30px 0;
+        display: inline-block;
+        background-color: #583F3C;
+        color: white;
+        cursor: pointer;
+        width: 51%;
+        font-size: 1.5rem;
+        font-weight: 500;
+        overflow: hidden;
+        transition: color 0.2s ease-in-out;
+    }
+
+    .home-heading h1 {
+        width: 100%;
+    }
+
+    .waste-type{
+        position: relative;
+        top: 0%;
+    }
+
+    .recommendation p{
+        padding: 0.3rem;
+    }
+
+    .waste-amount label{
+        font-size: 1rem;
+    }
+
+    .waste-amount input{
+        padding: 0.5%;
+    }
+}
